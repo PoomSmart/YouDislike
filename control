@@ -1,0 +1,9 @@
+Package: com.ps.dislike
+Name: YouDislike
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Modify YouTube video dislike count.
+Maintainer: PoomSmart
+Author: PoomSmart
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 11.0)
