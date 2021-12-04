@@ -4,7 +4,7 @@
 
 %hook YTSlimVideoDetailsActionView
 
-+ (YTSlimVideoDetailsActionView *)actionViewWithSlimMetadataButtonSupportedRenderer:(YTISlimMetadataButtonSupportedRenderers *)renderer withElementContextBlock:(id)block {
++ (YTSlimVideoDetailsActionView *)actionViewWithSlimMetadataButtonSupportedRenderer:(YTISlimMetadataButtonSupportedRenderers *)renderer withElementsContextBlock:(id)block {
     if ([renderer rendererOneOfCase] == 153515154) {
         // Enforce 124608045 case
         return [[%c(YTSlimVideoDetailsActionView) alloc] initWithSlimMetadataButtonSupportedRenderer:renderer];
