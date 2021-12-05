@@ -22,7 +22,7 @@ NSInteger getLike(YTSlimVideoDetailsActionView *self) {
     NSString *likeText = likeRenderer.slimMetadataToggleButtonRenderer.button.toggleButtonRenderer.defaultText.accessibility.accessibilityData.label;
     NSScanner *scanner = [NSScanner scannerWithString:likeText];
     NSString *likeNumber;
-    if ([scanner scanCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&likeNumber]) {
+    if ([scanner scanCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789,"] intoString:&likeNumber]) {
         NSNumberFormatter *formatter = [NSNumberFormatter new];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
         return [[formatter numberFromString:likeNumber] integerValue];
@@ -50,7 +50,7 @@ void setDislike(YTSlimVideoDetailsActionView *self) {
     if (averageRating) {
         like = getLike(self);
         if (like) {
-            dislike = round(((5 / averageRating) - 1) * like);
+            dislike = round(((5 - averageRating) * like) / (averageRating - 1));
             result = getNormalizedDislike(dislike);
         }
     }
@@ -79,8 +79,8 @@ void setDislike(YTSlimVideoDetailsActionView *self) {
         if ([renderer slimButton_isDislikeButton]) {
             // YTISlimMetadataToggleButtonRenderer *meta = renderer.slimMetadataToggleButtonRenderer;
             // NSString *myString = meta.target.videoId;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-                setDislike(self);
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2), dispatch_get_main_queue(), ^(void){
+                setDislike(self); // kickstart
             });
             [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateDislike) userInfo:nil repeats:YES];
         }
