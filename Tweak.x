@@ -79,10 +79,7 @@ void setDislike(YTSlimVideoDetailsActionView *self) {
         if ([renderer slimButton_isDislikeButton]) {
             // YTISlimMetadataToggleButtonRenderer *meta = renderer.slimMetadataToggleButtonRenderer;
             // NSString *myString = meta.target.videoId;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2), dispatch_get_main_queue(), ^(void){
-                setDislike(self); // kickstart
-            });
-            [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(updateDislike) userInfo:nil repeats:YES];
+            [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(updateDislike) userInfo:nil repeats:NO];
         }
     }
     return self;
