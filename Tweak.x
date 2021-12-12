@@ -22,7 +22,7 @@ NSInteger getLike(YTSlimVideoDetailsActionView *self) {
     NSString *likeText = likeRenderer.slimMetadataToggleButtonRenderer.button.toggleButtonRenderer.defaultText.accessibility.accessibilityData.label;
     NSScanner *scanner = [NSScanner scannerWithString:likeText];
     NSString *likeNumber;
-    if ([scanner scanCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789,"] intoString:&likeNumber]) {
+    if ([scanner scanCharactersFromSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789,."] intoString:&likeNumber]) {
         NSNumberFormatter *formatter = [NSNumberFormatter new];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
         return [[formatter numberFromString:likeNumber] integerValue];
