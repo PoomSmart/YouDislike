@@ -51,7 +51,7 @@ void setDislike(YTSlimVideoDetailsActionView *self) {
     if (averageRating) {
         like = getLike(self);
         if (like) {
-            dislike = round(((5 - averageRating) * like) / (averageRating - 1));
+            dislike = fabs(round(((5 - averageRating) * like) / (averageRating - 1)));
             result = getNormalizedDislike(dislike);
         }
     }
