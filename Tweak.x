@@ -6,6 +6,7 @@
 #import "../YouTubeHeader/YTSlimVideoScrollableDetailsActionsView.h"
 #import "../YouTubeHeader/YTIFormattedString.h"
 
+// NOTICE: YouTube may have killed average rating from all videos, the whole thing wouldn't work
 float getAverageRating(YTSlimVideoDetailsActionView *self) {
     UIViewController *ancestor = [self _viewControllerForAncestor];
     if (![ancestor respondsToSelector:@selector(parentViewController)]) return 0;
